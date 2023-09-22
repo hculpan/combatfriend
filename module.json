@@ -1,0 +1,28 @@
+{
+  "id": "combatfriend2e",
+  "title": "CombatFriend2E",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11"
+  },
+  "authors": [
+    {
+      "name": "Harry Culpan",
+      "flags": {}
+    }
+  ],
+  "scripts": [
+    "scripts/combatfriend2e.js"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    }
+  ],
+  "styles": [
+    "styles/combatfriend2e.css"
+  ]
+}
