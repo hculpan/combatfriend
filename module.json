@@ -12,9 +12,6 @@
       "flags": {}
     }
   ],
-  "scripts": [
-    "scripts/combatfriend2e.js"
-  ],
   "languages": [
     {
       "lang": "en",
@@ -22,7 +19,7 @@
       "path": "languages/en.json"
     }
   ],
-  "styles": [
-    "styles/combatfriend2e.css"
-  ]
+  "socket": true,
+  "scripts": ["scripts/combatfriend2e.js"],
+  "styles": ["styles/combatfriend2e.css"]
 }

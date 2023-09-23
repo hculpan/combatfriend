@@ -1,0 +1,25 @@
+<div class="combatfriend2e-form">
+  <div class="flexcol">
+    <div class="combatfriend2e-box flexrow">
+    {{#if isGM}}
+      <button class="combatfriend2e-button" data-action="next">Next</button>
+      <button class="combatfriend2e-round-button" data-action="resend">Round: {{ round }}</button>
+      <button class="combatfriend2e-button" data-action="end">End</button>
+    {{else if round}}
+      <div class="combatfriend2e-round-label">Round: {{ round }}</div>
+    {{else}}
+      <div class="combatfriend2e-round-label">No combat</div>
+    {{/if}}
+    </div>
+    {{#if round }}
+    <div class="flexrow">
+      <div class="combatfriend2e-init-label">GM</div>
+      <div class="combatfriend2e-init-label">Party</div>
+    </div>
+    <div class="flexrow">
+      <div class="combatfriend2e-init-text">{{ gm }}</div>
+      <div class="combatfriend2e-init-text">{{ party }}</div>
+    </div>
+    {{/if}}
+  </div>
+</div>
