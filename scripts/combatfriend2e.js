@@ -1,7 +1,16 @@
 let combatFriend2eConfig;
 
+Hooks.on("init", function () {
+  registerData();
+});
+
 Hooks.on("ready", function () {
   combatFriend2eConfig = new CombatFriend2eConfig();
+
+  combatFriend2eConfig.gmInit = game.settings.get("combatfriend2e", "gmInit");
+  combatFriend2eConfig.partyInit = game.settings.get("combatfriend2e", "partyInit");
+  combatFriend2eConfig.round = game.settings.get("combatfriend2e", "round");
+
   combatFriend2eConfig.render(true, { userId: game.userId });
 });
 
@@ -10,11 +19,45 @@ Hooks.once("socketlib.ready", () => {
   socket.register("next", nextRound);
 });
 
+function registerData() {
+  game.settings.register("combatfriend2e", "gmInit", {
+    name: "GM Init",
+    hint: "",
+    scope: "world",
+    config: true,
+    type: Number,
+    default: 0,
+  });
+  game.settings.register("combatfriend2e", "partyInit", {
+    name: "Party Init",
+    hint: "",
+    scope: "world",
+    config: true,
+    type: Number,
+    default: 0,
+  });
+  game.settings.register("combatfriend2e", "round", {
+    name: "Round",
+    hint: "",
+    scope: "world",
+    config: true,
+    type: Number,
+    default: 0,
+  });
+}
+
 function nextRound(gm, party, round) {
   combatFriend2eConfig.gmInit = gm;
   combatFriend2eConfig.partyInit = party;
   combatFriend2eConfig.round = round;
+
   combatFriend2eConfig.render(true);
+}
+
+function saveData() {
+  game.settings.set("combatfriend2e", "gmInit", combatFriend2eConfig.gmInit);
+  game.settings.set("combatfriend2e", "partyInit", combatFriend2eConfig.partyInit);
+  game.settings.set("combatfriend2e", "round", combatFriend2eConfig.round);
 }
 
 class CombatFriend2eConfig extends FormApplication {
@@ -51,6 +94,7 @@ class CombatFriend2eConfig extends FormApplication {
         combatFriend2eConfig.round += 1;
         combatFriend2eConfig.gmInit = Math.floor(Math.random() * 10 + 1);
         combatFriend2eConfig.partyInit = Math.floor(Math.random() * 10 + 1);
+        saveData();
         break;
       }
 
@@ -71,7 +115,6 @@ class CombatFriend2eConfig extends FormApplication {
   }
 
   getData(options) {
-    console.log("combatfriend2e | " + game.users.activeGM.id);
     return {
       gm: combatFriend2eConfig.gmInit,
       party: combatFriend2eConfig.partyInit,
@@ -80,34 +123,3 @@ class CombatFriend2eConfig extends FormApplication {
     };
   }
 }
-
-/*
-let socket;
-
-Hooks.once("socketlib.ready", () => {
-  socket = socketlib.registerModule("combatfriend2e");
-  socket.register("hello", showHelloMessage);
-  socket.register("add", add);
-});
-
-Hooks.once("ready", async () => {
-  // Let's send a greeting to all other connected users.
-  // Functions can either be called by their given name...
-  socket.executeForEveryone("hello", game.user.name);
-  // ...or by passing in the function that you'd like to call.
-  socket.executeForEveryone(showHelloMessage, game.user.name);
-  // The following function will be executed on a GM client.
-  // The return value will be sent back to us.
-  const result = await socket.executeAsGM("add", 5, 3);
-  console.log(`The GM client calculated: ${result}`);
-});
-
-function showHelloMessage(userName) {
-  console.log(`User ${userName} says hello!`);
-}
-
-function add(a, b) {
-  console.log("The addition is performed on a GM client.");
-  return a + b;
-}
-*/
