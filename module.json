@@ -1,7 +1,7 @@
 {
   "id": "combatfriend2e",
   "title": "CombatFriend2E",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": {
     "minimum": "11",
     "verified": "11"
@@ -22,7 +22,7 @@
   "socket": true,
   "scripts": ["scripts/combatfriend2e.js"],
   "styles": ["styles/combatfriend2e.css"],
-  "download": "https://github.com/hculpan/combatfriend2e/archive/refs/tags/v1.0.0.zip",
+  "download": "https://github.com/hculpan/combatfriend2e/archive/refs/tags/v1.0.1.zip",
   "manifest": "https://github.com/hculpan/combatfriend2e/releases/latest/download/module.json",
   "readme": "https://github.com/hculpan/combatfriend2e/blob/main/RELEASE.md"
 }
