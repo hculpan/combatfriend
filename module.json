@@ -21,5 +21,8 @@
   ],
   "socket": true,
   "scripts": ["scripts/combatfriend2e.js"],
-  "styles": ["styles/combatfriend2e.css"]
+  "styles": ["styles/combatfriend2e.css"],
+  "download": "https://github.com/hculpan/combatfriend2e/archive/refs/tags/v1.0.0.zip",
+  "manifest": "https://github.com/hculpan/combatfriend2e/releases/latest/download/module.json",
+  "readme": "https://github.com/hculpan/combatfriend2e/blob/main/RELEASE.md"
 }
