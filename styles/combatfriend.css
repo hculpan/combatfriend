@@ -1,41 +1,48 @@
-  .combatfriend2e-init-text {
+  .combatfriend-init-text {
     text-align: center;
     font-size: large;
     font-weight: bold;
   }
   
-  .combatfriend2e-init-label {
+  .combatfriend-init-label {
     text-align: center;
     font-weight: bold;
     margin-bottom: 10px;
   }
   
-  .combatfriend2e-round-label {
+  .combatfriend-round-label {
     text-align: center; 
     line-height: 25px;
     margin-bottom: 8px; 
   }
 
-  .combatfriend2e-box {
+  .combatfriend-box {
     border-bottom: 1px solid black;
     margin-bottom: 8px; 
+    justify-content: center;
+    align-items: center;
   }
   
-  .combatfriend2e-button {
+  .combatfriend-button {
     font-size: small;
     max-height: 25px;
     line-height: 15px;
     max-width: 50px;
   }
 
-  .combatfriend2e-round-button {
+  .combatfriend-round-button {
     font-size: small;
     max-height: 25px;
     line-height: 15px;
     min-width: 80px;
     max-width: 80px;
   }
-  .combatfriend2e-form {
+  
+  .combatfriend-form {
     min-height: 90px;
     max-height: 90px;
+  }
+
+  .combatfriend-sequence {
+    border-bottom: 1px solid black;
   }

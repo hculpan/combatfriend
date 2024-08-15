@@ -1,0 +1,34 @@
+<div class="combatfriend-form">
+  <div class="flexcol">
+    <div class="combatfriend-box flexrow">
+      <button class="combatfriend-button" data-action="next">Next</button>
+      <div class="combatfriend-init-label">Round: {{ round }}</div>
+      <button class="combatfriend-button" data-action="end">End</button>
+    </div>
+    <div class="combatfriend-sequence">
+      <h3>Sequence per Round (10s)</h3>
+      <ol>
+        <li>Declare spells and melee movement</li>
+        <li>Roll initiative: <strong>{{ initWinner }}</strong></li>
+        <li>Monster/NPC morale check</li>
+        <li>Movement</li>
+        <li>Missile attacks</li>
+        <li>Spell casting</li>
+        <li>Melle attacks</li>
+      </ol>
+    </div>
+    {{#if round }}
+    <hr>
+    <div class="combatfriend-init-results">
+      <div class="flexrow">
+        <div class="combatfriend-init-text">{{ gm }}</div>
+        <div class="combatfriend-init-text">{{ party }}</div>
+      </div>
+      <div class="flexrow">
+        <div class="combatfriend-init-label">Enemies</div>
+        <div class="combatfriend-init-label">Party</div>
+      </div>
+    </div>
+    {{/if}}
+  </div>
+</div>
