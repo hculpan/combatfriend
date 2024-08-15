@@ -1,34 +1,94 @@
 <div class="combatfriend-form">
   <div class="flexcol">
+    <!-- This section is always visible -->
     <div class="combatfriend-box flexrow">
-      <button class="combatfriend-button" data-action="next">Next</button>
+      <button id="startBtn" class="combatfriend-button" data-action="add-timer">Add Timer</button>
       <div class="combatfriend-init-label">Round: {{ round }}</div>
       <button class="combatfriend-button" data-action="end">End</button>
     </div>
-    <div class="combatfriend-sequence">
-      <h3>Sequence per Round (10s)</h3>
-      <ol>
-        <li>Declare spells and melee movement</li>
-        <li>Roll initiative: <strong>{{ initWinner }}</strong></li>
-        <li>Monster/NPC morale check</li>
-        <li>Movement</li>
-        <li>Missile attacks</li>
-        <li>Spell casting</li>
-        <li>Melle attacks</li>
-      </ol>
+
+    <!-- Tab navigation -->
+    <div class="combatfriend-tabs">
+      <button class="combatfriend-tab-button" data-tab="tab1">Combat</button>
+      <button class="combatfriend-tab-button" data-tab="tab2">Timers</button>
     </div>
-    {{#if round }}
-    <hr>
-    <div class="combatfriend-init-results">
-      <div class="flexrow">
-        <div class="combatfriend-init-text">{{ gm }}</div>
-        <div class="combatfriend-init-text">{{ party }}</div>
+
+    <!-- Tab content -->
+    <div class="combatfriend-tab-content" id="tab1" style="display: block;">
+      <!-- This content is specific to Tab 1 -->
+      <div class="combatfriend-sequence">
+        <h3>Sequence per Round (10s)</h3>
+        <ol>
+          <li>Declare spells and melee movement</li>
+          <li>Roll initiative: <button class="combatfriend-button" data-action="next">Next</button></li>
+          <li>Monster/NPC morale check</li>
+          <li>Movement</li>
+          <li>Missile attacks</li>
+          <li>Spell casting</li>
+          <li>Melee attacks</li>
+        </ol>
       </div>
-      <div class="flexrow">
-        <div class="combatfriend-init-label">Enemies</div>
-        <div class="combatfriend-init-label">Party</div>
+      {{#if round }}
+        {{#if party }}
+        <div class="combatfriend-init-results">
+          <div class="flexrow">
+            <div class="combatfriend-init-text">{{ gm }}</div>
+            <div class="combatfriend-init-text">{{ party }}</div>
+          </div>
+          <div class="flexrow">
+            <div class="combatfriend-init-label">Enemies</div>
+            <div class="combatfriend-init-label">Party</div>
+          </div>
+        </div>
+        {{/if}}
+      {{/if}}
+    </div>
+
+    <div class="combatfriend-tab-content" id="tab2" style="display: none;">
+      <div class="combatfriend-timers-header">
+        <h3>Timers</h3>
+        <div class="combatfriend-header-buttons">
+          <button class="icon-button" data-action="add-timer">
+            <i class="fas fa-plus"></i> 
+          </button>
+          <button class="icon-button" data-action="clear-timers">
+            <i class="fas fa-ban"></i> 
+          </button>
+        </div>
+      </div>      
+      <div>
+        {{#each timers}}
+          <table class="combatfriend-timers-list">
+            <tr>
+              <td class="combatfriend-timer-name">{{ this.name }}</td>
+              <td class="combatfriend-timer-remaining">{{ this.remaining }}</td>
+            </tr>
+          </table>
+        {{/each}}
       </div>
     </div>
-    {{/if}}
   </div>
+
+  <script >
+    document.querySelectorAll('.combatfriend-tab-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const tabName = button.getAttribute('data-tab');
+
+        // Remove active class from all buttons
+        document.querySelectorAll('.combatfriend-tab-button').forEach(btn => btn.classList.remove('active'));
+
+        // Hide all tab contents
+        document.querySelectorAll('.combatfriend-tab-content').forEach(content => content.style.display = 'none');
+
+        // Add active class to the clicked button
+        button.classList.add('active');
+
+        // Show the corresponding tab content
+        document.getElementById(tabName).style.display = 'block';
+      });
+    });
+
+// Optionally, you can make the first tab active by default
+    document.querySelector('.combatfriend-tab-button[data-tab="tab1"]').classList.add('active');
+  </script>
 </div>

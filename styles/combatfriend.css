@@ -27,7 +27,7 @@
     font-size: small;
     max-height: 25px;
     line-height: 15px;
-    max-width: 50px;
+    max-width: 75px;
   }
 
   .combatfriend-round-button {
@@ -43,6 +43,73 @@
     max-height: 90px;
   }
 
+  .combatfriend-init-results {
+    padding-top: 15px;
+  }
+
   .combatfriend-sequence {
     border-bottom: 1px solid black;
+  }
+
+  .combatfriend-tabs {
+    display: flex;
+    margin-top: 10px;
+  }
+  
+  .combatfriend-tab-button {
+    padding: 1px 8px;
+    line-height: 1;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    background-color: #f1f1f1;
+    margin-right: 2px;
+    width: 80px;
+    height: 25px;
+  }
+  
+  .combatfriend-tab-button.active {
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
+  }
+  
+  .combatfriend-tab-content {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+  }
+
+  .combatfriend-timer-name {
+    width: 80%;
+  }
+
+  .combatfriend-timer-remaining {
+    text-align: center;
+  }
+
+  .combatfriend-timers-list {
+    border: none;
+  }
+  .combatfriend-timers-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .combatfriend-header-buttons {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+  }
+  
+  .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px; /* Adjust the size as needed */
+    color: #333; /* Color of the icons */
+    padding: 5px;
+  }
+  
+  .icon-button:hover {
+    color: #007bff; /* Color on hover */
   }
